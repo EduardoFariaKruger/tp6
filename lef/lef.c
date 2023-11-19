@@ -56,7 +56,7 @@ struct lef_t *destroi_lef (struct lef_t *l)
 {
     struct nodo_lef_t *p = l->primeiro;
     struct nodo_lef_t *temp;
-    while(p->prox != NULL)
+    while (p != NULL)
     {
         temp = p;
         destroi_evento(p->evento);
