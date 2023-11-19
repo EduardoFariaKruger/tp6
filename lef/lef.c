@@ -86,7 +86,7 @@ int insere_lef (struct lef_t *l, struct evento_t *e)
     }
     novo->evento = e;
     struct nodo_lef_t *temp = l->primeiro;
-    while(temp->prox != NULL && temp->evento->tempo >= e->tempo)
+    while(temp->prox != NULL && temp->evento->tempo > e->tempo)
     {
         temp = temp->prox;
     }
