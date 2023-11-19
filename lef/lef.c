@@ -84,7 +84,7 @@ int insere_lef (struct lef_t *l, struct evento_t *e)
     {
         return 0;
     }
-    novo->prox = (l->primeiro)->prox;
+    novo->prox = l->primeiro;
     l->primeiro = novo;
     novo->evento = e;
     return 1;
@@ -101,9 +101,12 @@ struct evento_t *retira_lef (struct lef_t *l)
         return NULL;
     }
     struct nodo_lef_t *temp;
+    struct evento_t *evento;
     temp = l->primeiro;
     l->primeiro = temp->prox;
-    return temp->evento;
+    evento = temp->evento;
+    free(temp);
+    return evento;
 }
 
 /* 
