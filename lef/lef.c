@@ -45,7 +45,6 @@ struct lef_t *cria_lef ()
         return NULL;
     }
     lef->primeiro = NULL;
-
     return lef;
 }
 
@@ -81,7 +80,7 @@ int insere_lef (struct lef_t *l, struct evento_t *e)
         return 0;
     }
     struct nodo_lef_t *novo;
-    if (!(novo = malloc(sizeof(struct lef_t))))
+    if (!(novo = malloc(sizeof(struct nodo_lef_t))))
     {
         return 0;
     }
