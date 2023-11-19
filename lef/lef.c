@@ -80,7 +80,6 @@ int insere_lef (struct lef_t *l, struct evento_t *e)
     {
         return 0;
     }
-    
     struct nodo_lef_t *novo;
     if (!(novo = malloc(sizeof(struct lef_t))))
     {
@@ -131,15 +130,13 @@ int vazia_lef (struct lef_t *l)
  */
 void imprime_lef (struct lef_t *l)
 {
-    if(l == NULL)
-    {
-        return;
-    }
+    int cont = 0;
     struct nodo_lef_t *p = l->primeiro;
     while(p->prox != NULL)
     {
-        printf("%d %d %d %d", p->evento->tempo, p->evento->tipo, p->evento->dado1, p->evento->dado2);
+        printf("%d %d %d %d\n", p->evento->tempo, p->evento->tipo, p->evento->dado1, p->evento->dado2);
+        cont += 1;
         p = p->prox;
     }
-
+    printf("total %d eventor\n", cont);
 }
