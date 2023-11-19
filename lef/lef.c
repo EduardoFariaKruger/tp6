@@ -72,25 +72,40 @@ struct lef_t *destroi_lef (struct lef_t *l)
  * Eventos com o mesmo tempo devem respeitar a politica FIFO.
  * Retorna 1 em caso de sucesso ou 0 caso contrario.
 */
-int insere_lef (struct lef_t *l, struct evento_t *e)
+int insere_lef(struct lef_t *l, struct evento_t *e)
 {
-    if(l == NULL)
+    if (l == NULL)
     {
         return 0;
     }
+
     struct nodo_lef_t *novo;
     if (!(novo = malloc(sizeof(struct nodo_lef_t))))
     {
         return 0;
     }
+
     novo->evento = e;
+    novo->prox = NULL;
+
+    if (l->primeiro == NULL || l->primeiro->evento->tempo > e->tempo)
+    {
+        // Inserir no início da lista ou em uma lista vazia
+        novo->prox = l->primeiro;
+        l->primeiro = novo;
+        return 1;
+    }
+
     struct nodo_lef_t *temp = l->primeiro;
-    while(temp->prox != NULL && temp->evento->tempo > e->tempo)
+    while (temp->prox != NULL && temp->prox->evento->tempo <= e->tempo)
     {
         temp = temp->prox;
     }
+
+    // Inserir no meio ou no final da lista
     novo->prox = temp->prox;
     temp->prox = novo;
+
     return 1;
 }
 
