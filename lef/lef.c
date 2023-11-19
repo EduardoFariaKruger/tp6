@@ -138,11 +138,11 @@ void imprime_lef (struct lef_t *l)
 {
     int cont = 0;
     struct nodo_lef_t *p = l->primeiro;
-    while(p->prox != NULL)
+    while (p != NULL)
     {
         printf("%d %d %d %d\n", p->evento->tempo, p->evento->tipo, p->evento->dado1, p->evento->dado2);
         cont += 1;
         p = p->prox;
     }
-    printf("total %d eventor\n", cont);
+    printf("total %d eventos\n", cont);
 }
