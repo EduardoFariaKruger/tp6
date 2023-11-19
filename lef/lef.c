@@ -139,5 +139,7 @@ void imprime_lef (struct lef_t *l)
     while(p->prox != NULL)
     {
         printf("%d %d %d %d", p->evento->tempo, p->evento->tipo, p->evento->dado1, p->evento->dado2);
+        p = p->prox;
     }
+
 }
