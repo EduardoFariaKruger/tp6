@@ -92,6 +92,7 @@ int insere_lef (struct lef_t *l, struct evento_t *e)
     }
     novo->prox = temp->prox;
     temp->prox = novo;
+    return 1;
 }
 
 /* 
