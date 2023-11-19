@@ -84,10 +84,14 @@ int insere_lef (struct lef_t *l, struct evento_t *e)
     {
         return 0;
     }
-    novo->prox = l->primeiro;
-    l->primeiro = novo;
     novo->evento = e;
-    return 1;
+    struct nodo_lef_t *temp = l->primeiro;
+    while(temp->prox != NULL && temp->evento->tempo >= e->tempo)
+    {
+        temp = temp->prox;
+    }
+    novo->prox = temp->prox;
+    temp->prox = novo;
 }
 
 /* 
