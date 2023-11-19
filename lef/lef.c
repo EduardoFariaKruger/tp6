@@ -64,7 +64,7 @@ struct lef_t *destroi_lef (struct lef_t *l)
         p = p->prox;
         free(temp);
     }
-    destroi_evento(l->primeiro);
+    destroi_evento(l->primeiro->evento);
     free(l->primeiro);
     return NULL;
 }
@@ -105,7 +105,7 @@ struct evento_t *retira_lef (struct lef_t *l)
     struct nodo_lef_t *temp;
     temp = l->primeiro;
     l->primeiro = temp->prox;
-    return temp;
+    return temp->evento;
 }
 
 /* 
