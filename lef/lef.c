@@ -10,7 +10,7 @@
 struct evento_t *cria_evento (int tempo, int tipo, int dado1, int dado2)
 {
     struct evento_t *evento;
-    if (!(evento = malloc(sizeof(struct lef_t))))
+    if (!(evento = malloc(sizeof(struct evento_t))))
     {
         return NULL;
     }
